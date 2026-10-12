@@ -1,149 +1,134 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>全栈服务 · 搭建维护 · 工具定制</title>
-<link rel="icon" href="https://avatars.githubusercontent.com/u/31272442?s=96&v=4">
-<style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    background: #0b0f19;
-    color: #d4d4d8;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    padding: 40px 16px;
-    position: relative;
-  }
-  body::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0; height: 300px;
-    background: linear-gradient(180deg, #151b2e 0%, transparent 100%);
-    z-index: -1;
-  }
-  .container { width: 100%; max-width: 480px; }
-  
-  /* 头像：去掉圆框，交给你自己掌控 */
-  .logo {
-    display: block;
-    width: 72px;
-    height: auto;
-    margin: 0 auto 24px;
-    transition: filter 0.3s;
-  }
-  .logo:hover {
-    filter: drop-shadow(0 0 12px rgba(0,229,204,0.3));
-  }
-  
-  /* 标题 */
-  h1 {
-    font-size: 28px;
-    font-weight: 700;
-    text-align: center;
-    color: #00e5cc;
-    margin-bottom: 40px;
-    letter-spacing: -0.5px;
-    line-height: 1.4;
-  }
-  
-  /* 卡片 */
-  .card {
-    background: #121829;
-    border: 1px solid #1e2538;
-    border-radius: 16px;
-    padding: 28px;
-    margin-bottom: 16px;
-    transition: border-color 0.2s, box-shadow 0.2s;
-  }
-  .card:hover {
-    border-color: #2e3a52;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.4);
-  }
-  .card h2 {
-    font-size: 14px;
-    font-weight: 600;
-    color: #8b949e;
-    letter-spacing: 1.5px;
-    margin-bottom: 16px;
-  }
-  .card ul { list-style: none; }
-  .card li {
-    font-size: 15px;
-    color: #d4d4d8;
-    padding: 6px 0;
-    position: relative;
-    padding-left: 18px;
-  }
-  .card li::before {
-    content: "·";
-    position: absolute;
-    left: 4px;
-    color: #52525b;
-    font-weight: bold;
-  }
-  
-  /* 联系方式 */
-  .contact {
-    text-align: center;
-    margin-top: 40px;
-    padding-top: 32px;
-    border-top: 1px solid #1e2538;
-  }
-  .contact p { font-size: 14px; color: #8b949e; margin-bottom: 8px; }
-  .contact .highlight {
-    font-size: 18px;
-    color: #fafafa;
-    font-weight: 700;
-    margin-top: 12px;
-    letter-spacing: 2px;
-  }
-  
-  .footer { text-align: center; margin-top: 32px; font-size: 12px; color: #484f58; }
-  
-  @media (max-width: 640px) {
-    h1 { font-size: 24px; margin-bottom: 32px; }
-    .card { padding: 20px; }
-    .logo { width: 64px; }
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全栈服务 · 搭建维护 · 工具定制</title>
+	<link rel="icon" href="https://avatars.githubusercontent.com/u/31272442?v=4&size=64">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
+            background: #0f1117;
+            color: #e0e0e0;
+            line-height: 1.8;
+            padding: 20px;
+        }
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 28px;
+            color: #00d4aa;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #888;
+            margin-bottom: 40px;
+            font-size: 14px;
+        }
+        .section {
+            background: #1a1d2e;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+            border: 1px solid #2a2d3e;
+        }
+        .section h2 {
+            color: #00d4aa;
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+        .section p, .section li {
+            color: #ccc;
+            font-size: 15px;
+        }
+        .section ul {
+            padding-left: 20px;
+        }
+        .section li {
+            margin-bottom: 8px;
+        }
+        .contact {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: #1a1d2e;
+            border-radius: 12px;
+            border: 1px solid #2a2d3e;
+        }
+        .contact h2 {
+            color: #00d4aa;
+            margin-bottom: 10px;
+        }
+        .contact p {
+            color: #ccc;
+            font-size: 15px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #555;
+            font-size: 12px;
+        }
+        .tag {
+            display: inline-block;
+            background: #00d4aa22;
+            color: #00d4aa;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            margin: 4px;
+        }
+    </style>
 </head>
 <body>
-<div class="container">
-
-  <!-- 换成你自己抠好的图 -->
-  <img class="logo" src="https://avatars.githubusercontent.com/u/31272442?s=96&v=4" alt="头像">
-
+    <div class="container">
+        <div class="logo">
+  <img src="https://avatars.githubusercontent.com/u/31272442?v=4&size=200" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin: 0 auto; display: block;">
   <h1>全栈服务 · 搭建维护 · 工具定制</h1>
 
-  <div class="card">
-    <h2>我能做什么</h2>
-    <ul>
-      <li>企业官网 / 个人主页 / 商品落地页</li>
-      <li>服务器部署、环境配置、运维排障</li>
-      <li>办公自动化脚本、内网工具、插件定制</li>
-    </ul>
-  </div>
+        <div class="section">
+            <h2>我能帮你做什么</h2>
+            <p>
+                <span class="tag">网站搭建</span>
+                <span class="tag">服务器配置</span>
+                <span class="tag">安全防护</span>
+				<span class="tag">工具定制</span>
+            </p>
+            <ul style="margin-top: 12px;">
+				<li>企业官网 / 个人主页 / 商品落地页</li>
+				<li>服务器部署、环境配置、运维排障</li>
+				<li>办公自动化脚本、内网工具、插件定制</li>
+				<li>从买域名到上线运行与维护，全程包办</li>
+            </ul>
+        </div>
 
-  <div class="card">
-    <h2>怎么合作</h2>
-    <ul>
-      <li>本地可上门，远程可协助</li>
-      <li>做事靠谱，价格实在</li>
-      <li>24年技术沉淀 · 诚信无忧</li>
-    </ul>
-  </div>
+        <div class="section">
+            <h2>关于我</h2>
+            <p>本地可上门，远程可协助。</p>
+			<p>做事靠谱，价格实在。</p>
+			<p>24年技术沉淀 · 诚信无忧</p>	
+        </div>
 
-  <div class="contact">
-    <p>有需求直接私信，看到就回</p>
-    <p class="highlight">🇦 🇭 🇦 🇾 .🇨 🇨</p>
-    <p style="margin-top:16px; color:#8b949e;">抖音 / 快手 / 微信私信均可</p>
-  </div>
+        <div class="contact">
+            <h2>联系我</h2>
+			<p>AHAY.CC</p>
+            <p>私信需求 · 专业定制</p>
+            <p style="margin-top: 8px; color: #888;">抖音 / 快手 / 微信私信均可</p>
+        </div>
 
-  <div class="footer">2002 — 2026 · 技术服务</div>
-
-</div>
+        <div class="footer">
+            <p>© 2026 技术服务 · 用心做好每一个项目</p>
+        </div>
+    </div>
 </body>
 </html>

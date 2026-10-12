@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>全栈服务 · 搭建维护 · 工具定制</title>
-	<link rel="icon" href="https://avatars.githubusercontent.com/u/31272442?v=4&size=64">
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/31272442?v=4&size=64">
     <style>
         * {
             margin: 0;
@@ -19,7 +19,6 @@
             padding: 20px;
             overflow-x: hidden;
         }
-        /* 星空画布：固定在最底层 */
         #starCanvas {
             position: fixed;
             top: 0;
@@ -125,36 +124,38 @@
                 <span class="tag">网站搭建</span>
                 <span class="tag">服务器配置</span>
                 <span class="tag">安全防护</span>
-				<span class="tag">工具定制</span>
+                <span class="tag">工具定制</span>
             </p>
             <ul style="margin-top: 12px;">
-				<li>企业官网 / 个人主页 / 商品落地页</li>
-				<li>服务器部署、环境配置、运维排障</li>
-				<li>办公自动化脚本、内网工具、插件定制</li>
-				<li>从买域名到上线运行与维护，全程包办</li>
+                <li>企业官网 / 个人主页 / 商品落地页</li>
+                <li>服务器部署、环境配置、运维排障</li>
+                <li>办公自动化脚本、内网工具、插件定制</li>
+                <li>从买域名到上线运行与维护，全程包办</li>
             </ul>
         </div>
 
         <div class="section">
             <h2>关于我</h2>
             <p>1998年开始学习计算机，DOS系统、386/486/586、软盘💾启动。</p>
-			<p>2002年开始接触QQ、雅虎邮箱、域名、单页建站，从命令行熬到云原生。</p>
+            <p>2002年开始接触QQ、雅虎邮箱、域名、单页建站，从命令行熬到云原生。</p>
         </div>
 
         <div class="contact">
-            <h2>联系我</h2>		
-			<div style="text-align: center; margin: 16px 0;">
-  <div><!-- 第一栏：蓝色字母 -->
-    <span style="color: #1a73e8; font-size: 24px; font-weight: 900; letter-spacing: 4px; font-family: Arial, sans-serif;">AHAY.CC</span>
-  </div>  
-<div><!-- 第二栏：复制按钮 + 提示 -->
-  <button onclick="copySearchEmoji()" id="copyBtn4" style="margin-left: 10px; padding: 6px 14px; background: #00e5cc; color: #0b0f19; border: none; border-radius: 6px; font-size: 13px; cursor: pointer; font-weight: 600;">点击·复制·搜索</button>
-  <span id="copyTip4" style="display: none; margin-left: 8px; color: #00e5cc; font-size: 13px;">点击·复制·搜索</span>
-</div>
-
+            <h2>联系我</h2>
+            <div style="margin: 16px 0;">
+                <!-- 第一栏：蓝色字母 -->
+                <div style="margin-bottom: 12px;">
+                    <span style="color: #1a73e8; font-size: 24px; font-weight: 900; letter-spacing: 4px; font-family: Arial, sans-serif;">AHAY.CC</span>
+                </div>
+                <!-- 第二栏：复制按钮 + 提示 -->
+                <div>
+                    <button onclick="copySearchEmoji()" id="copyBtn4" style="padding: 6px 14px; background: #00e5cc; color: #0b0f19; border: none; border-radius: 6px; font-size: 13px; cursor: pointer; font-weight: 600;">点击·复制·搜索</button>
+                    <span id="copyTip4" style="display: none; margin-left: 8px; color: #00e5cc; font-size: 13px;">已复制！去粘贴搜索</span>
+                </div>
+            </div>
             <p>私信需求 · 专业定制</p>
-			<p>价格实在 · 诚信无忧</p>
-			<p>本地可上门 · 远程可协助</p>
+            <p>价格实在 · 诚信无忧</p>
+            <p>本地可上门 · 远程可协助</p>
             <p style="margin-top: 8px; color: #888;">抖音 / 快手 / 微信私信均可</p>
         </div>
 
@@ -163,41 +164,52 @@
         </div>
     </div>
 
-<script>
-<!-- 第一栏：蓝色字母的JS -->
-function copySearchEmoji() {
-  navigator.clipboard.writeText('AHAY.CC').then(() => {
-    document.getElementById('copyBtn4').textContent = '已复制 ✓';
-    document.getElementById('copyTip4').style.display = 'inline';
-    setTimeout(() => {
-      document.getElementById('copyBtn4').textContent = '点击·复制·搜索';
-      document.getElementById('copyTip4').style.display = 'none';
-    }, 3000);
-  });
-}
+    <script>
+    function copySearchEmoji() {
+        navigator.clipboard.writeText('AHAY.CC').then(function() {
+            document.getElementById('copyBtn4').textContent = '已复制 ✓';
+            document.getElementById('copyTip4').style.display = 'inline';
+            setTimeout(function() {
+                document.getElementById('copyBtn4').textContent = '点击·复制·搜索';
+                document.getElementById('copyTip4').style.display = 'none';
+            }, 3000);
+        }).catch(function() {
+            // 备用方案
+            var input = document.createElement('input');
+            input.value = 'AHAY.CC';
+            document.body.appendChild(input);
+            input.select();
+            document.execCommand('copy');
+            document.body.removeChild(input);
+            document.getElementById('copyBtn4').textContent = '已复制 ✓';
+            document.getElementById('copyTip4').style.display = 'inline';
+            setTimeout(function() {
+                document.getElementById('copyBtn4').textContent = '点击·复制·搜索';
+                document.getElementById('copyTip4').style.display = 'none';
+            }, 3000);
+        });
+    }
 
+    var canvas = document.getElementById('starCanvas');
+    var ctx = canvas.getContext('2d');
 
-const canvas = document.getElementById('starCanvas');
-const ctx = canvas.getContext('2d');
+    var width, height;
+    var stars = [];
+    var mouse = { x: null, y: null };
 
-let width, height;
-let stars = [];
-let mouse = { x: null, y: null };
+    function resize() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
 
-function resize() {
-    width = canvas.width = window.innerWidth;
-    height = canvas.height = window.innerHeight;
-}
-window.addEventListener('resize', resize);
-resize();
+    window.addEventListener('mousemove', function(e) {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+    });
 
-window.addEventListener('mousemove', (e) => {
-    mouse.x = e.clientX;
-    mouse.y = e.clientY;
-});
-
-class Star {
-    constructor() {
+    function Star() {
         this.x = Math.random() * width;
         this.y = Math.random() * height;
         this.size = Math.random() * 1.5 + 0.5;
@@ -205,10 +217,10 @@ class Star {
         this.speedY = (Math.random() - 0.5) * 0.3;
         this.alpha = Math.random();
         this.twinkleSpeed = Math.random() * 0.02 + 0.01;
-        const colors = ['#ffffff', '#00d4aa', '#4fc3f7', '#81d4fa'];
+        var colors = ['#ffffff', '#00d4aa', '#4fc3f7', '#81d4fa'];
         this.color = colors[Math.floor(Math.random() * colors.length)];
     }
-    update() {
+    Star.prototype.update = function() {
         this.x += this.speedX;
         this.y += this.speedY;
         if (this.x < 0 || this.x > width) this.speedX *= -1;
@@ -217,9 +229,9 @@ class Star {
         if (this.alpha < 0.2 || this.alpha > 1) this.twinkleSpeed *= -1;
 
         if (mouse.x && mouse.y) {
-            let dx = mouse.x - this.x;
-            let dy = mouse.y - this.y;
-            let dist = Math.sqrt(dx * dx + dy * dy);
+            var dx = mouse.x - this.x;
+            var dy = mouse.y - this.y;
+            var dist = Math.sqrt(dx * dx + dy * dy);
             if (dist < 180) {
                 ctx.beginPath();
                 ctx.strokeStyle = this.color;
@@ -231,8 +243,8 @@ class Star {
                 ctx.globalAlpha = 1;
             }
         }
-    }
-    draw() {
+    };
+    Star.prototype.draw = function() {
         ctx.save();
         ctx.globalAlpha = this.alpha;
         ctx.fillStyle = this.color;
@@ -240,23 +252,22 @@ class Star {
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fill();
         ctx.restore();
+    };
+
+    var starCount = Math.min(width * height / 1800, 360);
+    for (var i = 0; i < starCount; i++) {
+        stars.push(new Star());
     }
-}
 
-const starCount = Math.min(width * height / 1800, 360);
-for (let i = 0; i < starCount; i++) {
-    stars.push(new Star());
-}
-
-function animate() {
-    ctx.clearRect(0, 0, width, height);
-    stars.forEach(star => {
-        star.update();
-        star.draw();
-    });
-    requestAnimationFrame(animate);
-}
-animate();
-</script>
+    function animate() {
+        ctx.clearRect(0, 0, width, height);
+        for (var i = 0; i < stars.length; i++) {
+            stars[i].update();
+            stars[i].draw();
+        }
+        requestAnimationFrame(animate);
+    }
+    animate();
+    </script>
 </body>
 </html>

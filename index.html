@@ -156,7 +156,30 @@
             <p>私信需求 · 专业定制</p>
             <p>价格实在 · 诚信无忧</p>
             <p>本地可上门 · 远程可协助</p>
-            <p style="margin-top: 8px; color: #888;">抖音 / 快手 / 微信私信均可</p>
+
+            <!-- ===== QQ & 微信 一键复制 开始 ===== -->
+            <!-- 联系方式容器：左对齐，限制最大宽度居中，与上方风格统一 -->
+            <div style="margin-top: 24px; text-align: left; max-width: 360px; margin-left: auto; margin-right: auto;">
+                <!-- QQ 行：图标居左，账号高亮，复制按钮居右 -->
+                <p style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+                    <span style="display: flex; align-items: center;">
+                        <!-- 本地彩色 QQ 图标，与 wechat.png 同目录 -->
+                        <img src="qq.png" width="22" height="22" style="margin-right: 8px;" alt="QQ">
+                        <span>QQ：<span id="copyQqText" style="color: #00e5cc;">2807638989</span></span>
+                    </span>
+                    <!-- 复制按钮：优先 navigator.clipboard，失败则用 execCommand 备用，兼容老浏览器 -->
+                    <button onclick="copyContact('copyQqText', this)" style="padding: 3px 12px; background: #00e5cc; color: #0b0f19; border: none; border-radius: 6px; font-size: 12px; cursor: pointer; font-weight: 600;">复制</button>
+                </p>
+                <!-- 微信 行：结构与 QQ 完全一致，仅替换图标与账号 -->
+                <p style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+                    <span style="display: flex; align-items: center;">
+                        <img src="wechat.png" width="22" height="22" style="margin-right: 8px;" alt="微信">
+                        <span>微信：<span id="copyWxText" style="color: #00e5cc;">xyz424200</span></span>
+                    </span>
+                    <button onclick="copyContact('copyWxText', this)" style="padding: 3px 12px; background: #00e5cc; color: #0b0f19; border: none; border-radius: 6px; font-size: 12px; cursor: pointer; font-weight: 600;">复制</button>
+                </p>
+            </div>
+            <!-- ===== QQ & 微信 一键复制 结束 ===== -->
         </div>
 
         <div class="footer">
@@ -189,7 +212,44 @@
             }, 3000);
         });
     }
-	
+
+    // ===== 通用复制函数：兼容新浏览器(navigator.clipboard)与老浏览器(execCommand) =====
+    // textId : 存放账号文本的 span 的 id
+    // btn    : 当前被点击的按钮(this)，用于改文字反馈
+    function copyContact(textId, btn) {
+        var text = document.getElementById(textId).innerText; // 只取账号文字，不带"QQ："前缀
+        // 优先使用现代剪贴板 API
+        if (navigator.clipboard) {
+            navigator.clipboard.writeText(text).then(function() {
+                showCopied(btn);
+            }).catch(function() {
+                fallbackCopy(text, btn); // API 失败时走备用
+            });
+        } else {
+            fallbackCopy(text, btn); // 老浏览器直接走备用
+        }
+    }
+    // 备用复制方案：创建隐藏输入框 + execCommand，兼容老手机/旧浏览器
+    function fallbackCopy(text, btn) {
+        var input = document.createElement('input');
+        input.value = text;
+        input.style.position = 'fixed';
+        input.style.opacity = '0';
+        document.body.appendChild(input);
+        input.select();
+        try {
+            document.execCommand('copy');
+            showCopied(btn);
+        } catch (e) {
+            btn.innerText = '复制失败';
+        }
+        document.body.removeChild(input);
+    }
+    // 按钮反馈：显示"已复制"1.5 秒后恢复"复制"
+    function showCopied(btn) {
+        btn.innerText = '已复制';
+        setTimeout(function() { btn.innerText = '复制'; }, 1500);
+    }
 
     var canvas = document.getElementById('starCanvas');
     var ctx = canvas.getContext('2d');
